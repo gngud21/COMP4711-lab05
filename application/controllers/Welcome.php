@@ -18,14 +18,7 @@ class Welcome extends Application
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	function render($template = 'template')
-	{
-	    $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'),true);
-	    // use layout content if provided
-	    if (!isset($this->data['content']))
-	        $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
-	    $this->parser->parse($template, $this->data);
-	}
+
 
 	public function index()
 	{
@@ -49,8 +42,6 @@ class Welcome extends Application
 		    if ($count >= 5) break;
 		}
 		$this->data['display_tasks'] = $display_tasks;
-
-
 		$this->data['pagebody'] = 'homepage';
 		$this->render(); 
 	}
