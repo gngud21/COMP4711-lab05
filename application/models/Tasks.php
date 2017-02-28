@@ -1,10 +1,11 @@
 <?php
+
 class Tasks extends MY_Model {
 
-        public function __construct()
-        {
-                parent::__construct('tasks', 'id');
-        }
+	public function __construct()
+	{
+		parent::__construct('tasks', 'id');
+	}
 
 	function getCategorizedTasks()
 	{
@@ -22,10 +23,23 @@ class Tasks extends MY_Model {
 		// order them by category
 		usort($undone, "orderByCategory");
 
-		// convert the array of task objects into an array of associative objects       
+
+		// convert the array of task objects into an array of associative objects		
 		foreach ($undone as $task)
 			$converted[] = (array) $task;
 
-	return $converted;
+		return $converted;
 	}
+
+}
+
+// return -1, 0, or 1 of $a's category name is earlier, equal to, or later than $b's
+function orderByCategory($a, $b)
+{
+	if ($a->group < $b->group)
+		return -1;
+	elseif ($a->group > $b->group)
+		return 1;
+	else
+		return 0;
 }

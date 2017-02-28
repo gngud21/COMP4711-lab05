@@ -1,22 +1,6 @@
-Hello! 
+Please, plase, please help with with my COMP1234 homework. I am clueless.
 
-We are CST Set 4G students in BCIT. 
+I can pay you in chocolate chip cookies, one dozen per feature
+completed bug free!!!
 
-We are currenly looking for 3 developers for developing BCIT instructor rating website. 
-
-We will offer 
-
-	-	Timmy everyday 
-	- 	ride if you live in burnaby 
-	- 	BCIT cloths
-	- 	laptop 
-
-If you are interested, please contact me at 778-000-0000.
-
-
-
-
-
-
-
-
+Contact me via PM at 123-456-7890.
