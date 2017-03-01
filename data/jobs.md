@@ -6,7 +6,7 @@ We are currenly looking for 3 developers for developing BCIT instructor rating w
 
 We will offer 
 
-	-	Timmy everyday 
+	-	Tim Horton everyday 
 	- 	ride if you live in burnaby 
 	- 	BCIT cloths
 	- 	laptop 
