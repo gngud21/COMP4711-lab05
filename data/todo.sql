@@ -1,24 +1,27 @@
--- phpMyAdmin SQL Dump
--- version 4.6.3
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Generation Time: Feb 14, 2017 at 08:40 AM
--- Server version: 5.7.13
--- PHP Version: 7.0.8
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `todo`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+DROP TABLE IF EXISTS `ci_sessions`;
+CREATE TABLE `ci_sessions` (
+  `id` varchar(128) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `data` blob NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+('17frpc832i45qp8n3ll5vksfnic1eci7', '127.0.0.1', 1488930620, 0x5f5f63695f6c6173745f726567656e65726174657c693a313438383933303631383b);
 
 -- --------------------------------------------------------
 
@@ -165,6 +168,13 @@ INSERT INTO `tasks` (`id`, `task`, `priority`, `size`, `group`, `deadline`, `sta
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
 -- Indexes for table `flags`
