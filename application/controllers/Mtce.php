@@ -23,8 +23,14 @@ class Mtce extends Application
 	    {
 	        if (!empty($task->status))
 	            $task->status = $this->statuses->get($task->status)->name;
-	        $result .= $this->parser->parse('oneitem', (array) $task, true);
+
+		    //choose the correct view fragment to style the task list row
+			if ($role == ROLE_OWNER)
+		        $result .= $this->parser->parse('oneitemx', (array) $task, true);
+			else
+		        $result .= $this->parser->parse('oneitem', (array) $task, true);
 	    }
+
 	    $this->data['display_tasks'] = $result;
 
 	    // and then pass them on
@@ -41,6 +47,7 @@ class Mtce extends Application
 	    // use a foreach loop, because the record indices may not be sequential
 	    $index = 0; // where are we in the tasks list
 	    $count = 0; // how many items have we added to the extract
+	    
 	    $start = ($num - 1) * $this->items_per_page;
 	    foreach($records as $task) {
 	        if ($index++ >= $start) {
@@ -51,7 +58,12 @@ class Mtce extends Application
 	    }
 	    
 	    $this->data['pagination'] = $this->pagenav($num);
-	    $this->show_page($tasks);
+	    // $this->show_page($tasks);
+
+	    $role = $this->session->userdata('userrole');
+	    if ($role == ROLE_OWNER) 
+	        $this->data['pagination'] .= $this->parser->parse('itemadd',[], true);
+	    $this->show_page($tasks);	    
 	}	
 
 	// Build the pagination navbar
