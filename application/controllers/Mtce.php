@@ -98,13 +98,37 @@ class Mtce extends Application
 	{
 		$task = $this->session->userdata('task');
 		$this->data['id'] = $task->id;
+		
+		//priority options
 		foreach ($this->priorities->all() as $record)
 		{
 			$priparms[$record->id] = $record->name;
 		}
+
+		//size options
+		foreach ($this->sizes->all() as $record)
+		{
+			$priparms1[$record->id] = $record->name;
+		}
+
+		//group options
+		foreach ($this->groups->all() as $record)
+		{
+			$priparms2[$record->id] = $record->name;
+		}
+
+		//status options
+		foreach ($this->statuses->all() as $record)
+		{
+			$priparms3[$record->id] = $record->name;
+		}
+
 		$fields = array(
 			'ftask' => makeTextField('Task description', 'task', $task->task, 'Work', "What needs to be done?"),
-			'fpriority' => makeComboBox('Priority', 'priority', $task->priority, $priparms, "How important is this task?"),
+			'fpriority' => makeComboBox('Priority', 'priority', $task->priority, $priparms, "How important is this task?"),			
+			'fsize' => makeComboBox('Size', 'size', $task->size, $priparms1, "How big is this task?"),
+			'fgroup' => makeComboBox('Gruop', 'group', $task->group, $priparms2, "Which group is this task?"),
+			'fstatus' => makeComboBox('Status', 'status', $task->status, $priparms3, "What status is this task?"),			
 			'zsubmit' => makeSubmitButton('Update the TODO task', "Click on home or <back> if you don't want to change anything!", 'btn-success'),
 		);
 		$this->data = array_merge($this->data, $fields);
